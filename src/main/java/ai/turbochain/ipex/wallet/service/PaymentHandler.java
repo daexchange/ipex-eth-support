@@ -151,7 +151,8 @@ public class PaymentHandler {
                     .get();
             BigInteger nonce = ethGetTransactionCount.getTransactionCount();
             BigInteger gasPrice = ethService.getGasPrice();
-            BigInteger value = EthConvert.toWei(payment.getAmount(), contract.getUnit()).toBigInteger();
+            //BigInteger value = EthConvert.toWei(payment.getAmount(), contract.getUnit()).toBigInteger();
+            BigInteger value = Convert.toWei(payment.getAmount(), Convert.Unit.ETHER).toBigInteger();
             Function fn = new Function("transfer", Arrays.asList(new Address(payment.getTo()), new Uint256(value)), Collections.<TypeReference<?>> emptyList());
             String data = FunctionEncoder.encode(fn);
             BigInteger maxGas = contract.getGasLimit();

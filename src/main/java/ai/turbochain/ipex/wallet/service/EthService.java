@@ -212,7 +212,8 @@ public class EthService {
             e.printStackTrace();
             logger.info("查询接口ERROR");
         }
-        return  EthConvert.fromWei(new BigDecimal(balance), contract.getUnit());
+        //return  EthConvert.fromWei(new BigDecimal(balance), contract.getUnit());
+        return Convert.fromWei(new BigDecimal(balance), Convert.Unit.ETHER);
     }
 
     public BigDecimal getMinerFee(BigInteger gasLimit) throws IOException {
